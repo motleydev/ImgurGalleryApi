@@ -48,3 +48,6 @@ app.listen(port, '0.0.0.0', function onStart(err) {
 // https://github.com/christianalfoni/webpack-express-boilerplate/blob/master/webpack.config.js
 // http://www.christianalfoni.com/articles/2015_04_19_The-ultimate-webpack-setup
 // http://madole.github.io/blog/2015/08/26/setting-up-webpack-dev-middleware-in-your-express-application/
+// 
+// https://github.com/react-webpack-generators/generator-react-webpack
+// https://github.com/stylesuxx/generator-react-webpack-redux
