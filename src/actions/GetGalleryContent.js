@@ -15,30 +15,54 @@ function checkStatus(response) {
   }
 }
 
+function parseJSON(response) {
+  return response.json()
+}
+
+// {
+//       method: 'GET',
+//       headers: {
+//         'Authorization': 'Client-ID beba972e29f0b1d'
+//       }
+// }
+
+export function dataReceivedMultiProcess(data) {
+
+  return function (dispatch) {
+    dispatch(ApplicationReceivedData())
+    return dispatch(UpdateGalleryContent(data))
+  }
+}
 
 
-export function fetchImages() {
+export function fetchImages(state) {
+
+  let imgurGallery = state.GalleryView || 'hot'
+  let imgurWindow = imgurGallery == 'top' ? (`/${state.GalleryWindow}/` || '/day/') : '';
+  let imgurSort = state.GallerySort || 'viral'
 
   return function (dispatch) {
 
     dispatch(ApplicationFetchingData())
 
-    return fetch(`https://api.imgur.com/3/gallery/hot/viral/0.json`, {
+    return fetch(`https://api.imgur.com/3/gallery/${imgurGallery}/${imgurSort}/0.json`,
+    {
       method: 'GET',
       headers: {
         'Authorization': 'Client-ID beba972e29f0b1d'
       }
     })
       .then(checkStatus)
-      .then(response => {
-        console.log(response)
-        response.json()
-      })
+      .then(parseJSON)
       .then(json => {
-        dispatch(UpdateGalleryContent(json.data))
-      }
-
-      ).catch(e => {
+        if (json.data) {
+          dispatch(dataReceivedMultiProcess(json.data))
+        } else {
+          let error = new Error("Response didn't have data")
+          error.response = response
+          throw error
+        }
+      }).catch(e => {
         dispatch(ApplicationErroredData(e.message))
       })
 

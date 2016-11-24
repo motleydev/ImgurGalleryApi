@@ -23,8 +23,19 @@ class Gallery extends React.Component {
   }
 
   render() {
+
+    const {error, fetching, idle} = this.props.ApplicationStatus
+    const {GalleryContent} = this.props
+
     return (
-      <div className="mdl-cell mdl-cell--8-col mdl-shadow--8dp">8</div>
+      <div className="mdl-cell mdl-cell--8-col mdl-shadow--8dp">
+        <div className="mdl-grid">
+          {fetching && <div className="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" />}
+          {GalleryContent.map((item, index) => {
+            return <GalleryItem key={index} {...item} />
+          })}
+        </div>
+      </div>
     );
   }
 }
