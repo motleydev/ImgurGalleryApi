@@ -3,7 +3,7 @@ import cssmodules from 'react-css-modules';
 import styles from './settingsui.cssmodule.scss';
 
 import SUiButton from './SettingsUiButton'
-import Galleryiewer from './GalleryItemViewer'
+import Galleryiewer from '../containers/ActiveGalleryItem'
 
 
 @cssmodules(styles)
@@ -43,6 +43,7 @@ class SettingsUi extends React.Component {
                     id="viral"
                     className="mdl-checkbox__input"
                     checked={GalleryViralCheck}
+                    disabled={!(GalleryView === 'user')}
                     onClick={() => SetGalleryVirality(!GalleryViralCheck)}
                   />
                   <span className="mdl-checkbox__label">Show Viral?</span>

@@ -45,7 +45,7 @@ export function fetchImages(state) {
 
     dispatch(ApplicationFetchingData())
 
-    return fetch(`https://api.imgur.com/3/gallery/${imgurGallery}/${imgurSort}/0.json`,
+    return fetch(`https://api.imgur.com/3/gallery/${imgurGallery}/${imgurSort}/0?showViral=${state.GalleryViralCheck}.json`,
     {
       method: 'GET',
       headers: {

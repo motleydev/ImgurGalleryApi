@@ -12,6 +12,7 @@ class Gallery extends React.Component {
     if (
         (nextProps.GalleryView !== this.props.GalleryView) ||
         (nextProps.GallerySort !== this.props.GallerySort) ||
+        (nextProps.GalleryViralCheck !== this.props.GalleryViralCheck) ||
         (nextProps.GalleryWindow !== this.props.GalleryWindow)
       ) {
         this.props.actions.GetGalleryContent(nextProps)
@@ -26,14 +27,16 @@ class Gallery extends React.Component {
 
     const {error, fetching, idle} = this.props.ApplicationStatus
     const {GalleryContent} = this.props
+    const {SetChosenImage} = this.props.actions
 
     return (
       <div className="mdl-cell mdl-cell--8-col mdl-shadow--8dp">
         <div className="mdl-grid">
           {fetching && <div className="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" />}
           {!fetching && GalleryContent.map((item, index) => {
-            return <GalleryItem key={index} {...item} />
+            return <GalleryItem key={index} index={index} clickHandler={SetChosenImage} {...item}/>
           })}
+          {error && <p>{error}</p>}
         </div>
       </div>
     );

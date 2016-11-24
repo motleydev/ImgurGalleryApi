@@ -18,7 +18,8 @@ import {
   SetStatus,
   ApplicationFetchingData,
   ApplicationReceivedData,
-  ApplicationErroredData
+  ApplicationErroredData,
+  SetChosenImage
 } from '../actions/';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -47,7 +48,7 @@ class App extends Component {
  */
 App.propTypes = {
   actions: PropTypes.object.isRequired,
-  ActiveGalleryItem: PropTypes.object.isRequired,
+  ActiveGalleryItem: PropTypes.number,
   GalleryWindow: PropTypes.string.isRequired,
   GalleryView: PropTypes.string.isRequired,
   GallerySort: PropTypes.string.isRequired,
@@ -81,7 +82,8 @@ function mapDispatchToProps(dispatch) {
     SetStatus,
     ApplicationFetchingData,
     ApplicationReceivedData,
-    ApplicationErroredData
+    ApplicationErroredData,
+    SetChosenImage
   };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;

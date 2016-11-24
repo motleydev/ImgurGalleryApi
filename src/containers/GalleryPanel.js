@@ -5,7 +5,7 @@ import React, {
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import {GetGalleryContent} from '../actions/';
+import { GetGalleryContent, SetChosenImage } from '../actions/';
 import Gallery from '../components/Gallery';
 
 class GalleryPanel extends Component {
@@ -32,7 +32,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  const actions = { GetGalleryContent };
+  const actions = { GetGalleryContent, SetChosenImage };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;
 }

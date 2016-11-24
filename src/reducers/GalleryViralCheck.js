@@ -5,7 +5,7 @@
  */
 import { SET_GALLERY_VIRALITY } from '../actions/const';
 
-const initialState = false;
+const initialState = true;
 
 function reducer(state = initialState, action) {
   /* Keep the reducer clean - do not mutate the original state. */
