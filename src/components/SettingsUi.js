@@ -61,37 +61,37 @@ class SettingsUi extends React.Component {
                   clickHandler={SetGalleryWindow}
                   label="Top"
                   group="window"
-                  disabled={!(GallerySort === 'top')}
+                  disabled={!(GalleryView === 'top')}
                   />
                 <SUiButton
                   clickHandler={SetGalleryWindow}
                   label="Day"
                   group="window"
-                  disabled={!(GallerySort === 'top')}
+                  disabled={!(GalleryView === 'top')}
                   />
                 <SUiButton
                   clickHandler={SetGalleryWindow}
                   label="Week"
                   group="window"
-                  disabled={!(GallerySort === 'top')}
+                  disabled={!(GalleryView === 'top')}
                   />
                 <SUiButton
                   clickHandler={SetGalleryWindow}
                   label="Month"
                   group="window"
-                  disabled={!(GallerySort === 'top')}
+                  disabled={!(GalleryView === 'top')}
                   />
                 <SUiButton
                   clickHandler={SetGalleryWindow}
                   label="Year"
                   group="window"
-                  disabled={!(GallerySort === 'top')}
+                  disabled={!(GalleryView === 'top')}
                   />
                 <SUiButton
                   clickHandler={SetGalleryWindow}
                   label="All"
                   group="window"
-                  disabled={!(GallerySort === 'top')}
+                  disabled={!(GalleryView === 'top')}
                   />
               </div>
             </div>

@@ -23,6 +23,7 @@ function mapStateToProps(state) {
   const props = {
     GalleryContent: state.GalleryContent,
     GalleryView: state.GalleryView,
+    GalleryWindow: state.GalleryWindow,
     GallerySort: state.GallerySort,
     GalleryViralCheck: state.GalleryViralCheck,
     ApplicationStatus: state.ApplicationStatus,

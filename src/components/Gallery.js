@@ -31,7 +31,7 @@ class Gallery extends React.Component {
       <div className="mdl-cell mdl-cell--8-col mdl-shadow--8dp">
         <div className="mdl-grid">
           {fetching && <div className="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" />}
-          {GalleryContent.map((item, index) => {
+          {!fetching && GalleryContent.map((item, index) => {
             return <GalleryItem key={index} {...item} />
           })}
         </div>
