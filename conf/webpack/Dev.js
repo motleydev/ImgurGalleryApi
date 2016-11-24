@@ -16,7 +16,10 @@ class WebpackDevConfig extends WebpackBaseConfig {
         'webpack-dev-server/client?http://0.0.0.0:8000/',
         'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
-        './client.js'
+        './client.js',
+        '../node_modules/material-design-lite/material.min.js',
+        '../node_modules/material-design-lite/material.min.css',
+        './styles/material-icons.css'
       ],
       plugins: [
         new webpack.HotModuleReplacementPlugin(),

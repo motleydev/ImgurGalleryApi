@@ -200,6 +200,7 @@ class WebpackBaseConfig {
       },
       plugins: [],
       resolve: {
+        mainFields: ["browser", "module", "main"],
         alias: {
           actions: `${this.srcPathAbsolute}/actions/`,
           components: `${this.srcPathAbsolute}/components/`,
@@ -211,8 +212,8 @@ class WebpackBaseConfig {
         },
         extensions: ['.js', '.jsx'],
         modules: [
+          'node_modules',
           this.srcPathAbsolute,
-          'node_modules'
         ]
       }
     };

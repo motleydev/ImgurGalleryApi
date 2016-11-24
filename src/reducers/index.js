@@ -8,7 +8,21 @@
  */
 /* Populated by react-webpack-redux:reducer */
 import { combineReducers } from 'redux';
-
-const reducers = {};
+import ApplicationStatus from '../reducers/ApplicationStatus.js';
+import GalleryContent from '../reducers/GalleryContent.js';
+import GalleryViralCheck from '../reducers/GalleryViralCheck.js';
+import GallerySort from '../reducers/GallerySort.js';
+import GalleryView from '../reducers/GalleryView.js';
+import GalleryWindow from '../reducers/GalleryWindow.js';
+import ActiveGalleryItem from '../reducers/ActiveGalleryItem.js';
+const reducers = {
+  ActiveGalleryItem,
+  GalleryWindow,
+  GalleryView,
+  GallerySort,
+  GalleryViralCheck,
+  GalleryContent,
+  ApplicationStatus
+};
 const combined = combineReducers(reducers);
 module.exports = combined;

@@ -1,0 +1,18 @@
+
+# Implement a simple web app that allows one to browse the Imgur gallery using http://api.imgur.com/:
+
+ ✔ show gallery images in a grid of thumbnails; @done (16-11-22 19:53)
+ ✔ show image description in the thumbnail, top or bottom; @done (16-11-22 19:53)
+ ☐ when clicking an image in the gallery - show its details: big image, title, description, upvotes, downvotes and score.
+
+
+ ✔ allow selecting the gallery section: hot, top, user; @done (16-11-22 19:22)
+ ✔ allow including / excluding viral images from the result set; @done (16-11-22 19:22)
+ ✔ allow specifying window and sort parameters; @done (16-11-22 19:32)
+
+Bonus points:
+ ☐ instead of calling Imgur API directly, proxy the API calls through your server (ex. Express);
+ ☐ provide a Dockerfile such that your solution can be run on Docker.
+App requirements:
+ ☐ use ReactJS;
+ ☐ and preferably Redux.

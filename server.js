@@ -4,7 +4,7 @@ const express = require('express');
 const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const config = require('./webpack.config.js');
+const config = require('./webpack.config.js')();
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
@@ -28,7 +28,7 @@ if (isDeveloping) {
   app.use(middleware);
   app.use(webpackHotMiddleware(compiler));
   app.get('*', function response(req, res) {
-    res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')));
+    res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'src/index.html')));
     res.end();
   });
 } else {
@@ -48,6 +48,6 @@ app.listen(port, '0.0.0.0', function onStart(err) {
 // https://github.com/christianalfoni/webpack-express-boilerplate/blob/master/webpack.config.js
 // http://www.christianalfoni.com/articles/2015_04_19_The-ultimate-webpack-setup
 // http://madole.github.io/blog/2015/08/26/setting-up-webpack-dev-middleware-in-your-express-application/
-// 
+//
 // https://github.com/react-webpack-generators/generator-react-webpack
 // https://github.com/stylesuxx/generator-react-webpack-redux
