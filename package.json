@@ -70,6 +70,7 @@
     "webpack-dev-server": "^2.1.0-beta"
   },
   "dependencies": {
+    "body-parser": "^1.15.2",
     "cross-env": "^3.1.0",
     "exports-loader": "0.6.3",
     "express": "^4.14.0",

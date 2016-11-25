@@ -3,7 +3,7 @@ import cssmodules from 'react-css-modules';
 import styles from './settingsui.cssmodule.scss';
 
 import SUiButton from './SettingsUiButton'
-import Galleryiewer from '../containers/ActiveGalleryItem'
+
 
 
 @cssmodules(styles)
@@ -125,9 +125,6 @@ class SettingsUi extends React.Component {
               </div>
             </div>
           </div>
-
-          <Galleryiewer />
-
         </div>
       </div>
     );

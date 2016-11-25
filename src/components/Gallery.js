@@ -3,6 +3,7 @@ import cssmodules from 'react-css-modules';
 import styles from './gallery.cssmodule.scss';
 
 import GalleryItem from './GalleryItem';
+import Galleryiewer from '../containers/ActiveGalleryItem'
 
 @cssmodules(styles)
 class Gallery extends React.Component {
@@ -33,10 +34,19 @@ class Gallery extends React.Component {
       <div className="mdl-cell mdl-cell--12-col">
         <div className="mdl-grid">
           {fetching && <div className="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" />}
-          {!fetching && GalleryContent.map((item, index) => {
-            return <GalleryItem key={index} index={index} clickHandler={SetChosenImage} {...item}/>
-          })}
           {error && <p>{error}</p>}
+          <div className="mdl-cell mdl-cell--12-col">
+            <div>
+              <Galleryiewer />
+            </div>
+          </div>
+          <div className="mdl-cell mdl-cell--12-col">
+            <div className="mdl-grid" styleName="grid-viewer">
+              {!fetching && GalleryContent.map((item, index) => {
+                return <GalleryItem key={index} index={index} clickHandler={SetChosenImage} {...item}/>
+              })}
+            </div>
+          </div>
         </div>
       </div>
     );

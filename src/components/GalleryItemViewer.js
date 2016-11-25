@@ -14,7 +14,7 @@ class GalleryItemViewer extends React.Component {
         {id && <div className="mdl-grid">
 
           <div className="mdl-cell mdl-cell--12-col">
-            <img src={`//i.imgur.com/${imageUrl}`} width="100%" />
+            <img src={`//i.imgur.com/${imageUrl.replace('b.jpg','h.jpg')}`} width="100%" />
           </div>
 
           <div className="mdl-cell mdl-cell--12-col">

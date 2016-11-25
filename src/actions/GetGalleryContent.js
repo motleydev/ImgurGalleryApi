@@ -16,6 +16,7 @@ function checkStatus(response) {
 }
 
 function parseJSON(response) {
+  console.log(response)
   return response.json()
 }
 
@@ -45,11 +46,15 @@ export function fetchImages(state) {
 
     dispatch(ApplicationFetchingData())
 
-    return fetch(`https://api.imgur.com/3/gallery/${imgurGallery}/${imgurSort}/0?showViral=${state.GalleryViralCheck}.json`,
+    fetch('/api')
+// https://api.imgur.com/3/gallery/${imgurGallery}/${imgurSort}/0?showViral=${state.GalleryViralCheck}.json
+    return fetch(`/api`,
     {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Client-ID beba972e29f0b1d'
+      method: 'POST',
+      body: {
+        imgurGallery,
+        imgurSort,
+        GalleryViralCheck: state.GalleryViralCheck
       }
     })
       .then(checkStatus)

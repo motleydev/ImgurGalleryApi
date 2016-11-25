@@ -5,6 +5,7 @@
  */
 const webpack = require('webpack');
 const WebpackBaseConfig = require('./Base');
+const path = require('path');
 
 class WebpackDevConfig extends WebpackBaseConfig {
 
@@ -13,10 +14,9 @@ class WebpackDevConfig extends WebpackBaseConfig {
     this.config = {
       devtool: 'cheap-module-source-map',
       entry: [
-        'webpack-dev-server/client?http://0.0.0.0:8000/',
-        'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
-        './client.js',
+        'webpack-hot-middleware/client?reload=true',
+         path.resolve('src/client.js'),
         '../node_modules/material-design-lite/material.min.js',
         '../node_modules/material-design-lite/material.min.css',
         './styles/material-icons.css'
