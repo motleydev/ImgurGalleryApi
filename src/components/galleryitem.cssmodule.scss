@@ -1,5 +1,36 @@
-.demo-card-image {
+.demoCardImage {
 
-  flex:  1 1 25%;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
 
+.demoCard {
+    width: 200px !important;
+    height: 200px;
+    background-size: contain;
+    position:relative;
+
+    &:hover {
+
+      &:after {
+        content: '';
+        left:0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        position: absolute;
+        background: rgba(255,255,255,0.95);
+      }
+
+      .content {
+        opacity: 1;
+      }
+
+    }
+}
+
+.content {
+  z-index: 5;
+  opacity:0;
 }

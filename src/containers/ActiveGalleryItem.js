@@ -11,7 +11,9 @@ import GalleryItemViewer from '../components/GalleryItemViewer';
 class ActiveGalleryItem extends Component {
   render() {
     const { actions, ActiveGalleryItem, GalleryContent } = this.props;
-    return <GalleryItemViewer item={GalleryContent[ActiveGalleryItem] } />;
+    return (
+      <GalleryItemViewer item={ActiveGalleryItem} />
+      );
   }
 }
 

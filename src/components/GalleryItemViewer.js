@@ -6,21 +6,24 @@ import styles from './galleryitemviewer.cssmodule.scss';
 class GalleryItemViewer extends React.Component {
 
   render() {
+
+    const {ups, downs, title, description, score, id, is_album, cover, imageUrl} = this.props.item
+
     return (
       <div className="mdl-cell mdl-cell--12-col">
-        <div className="mdl-grid">
+        {id && <div className="mdl-grid">
 
           <div className="mdl-cell mdl-cell--12-col">
-            <img src="*" width="100%" />
+            <img src={`//i.imgur.com/${imageUrl}`} width="100%" />
           </div>
 
           <div className="mdl-cell mdl-cell--12-col">
-            <h4>The title of the content </h4>
+            <h4>{title}</h4>
           </div>
 
 
           <div className="mdl-cell mdl-cell--12-col">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+            <p>{description}</p>
           </div>
 
           <div className="mdl-cell mdl-cell--12-col">
@@ -29,22 +32,22 @@ class GalleryItemViewer extends React.Component {
 
                 <div className="mdl-grid">
                   <div className="mdl-cell mdl-cell--6-col">
-                    <h3>Upvote</h3>
+                    <h4>{ups}</h4>
                   </div>
                   <div className="mdl-cell mdl-cell--6-col">
-                    <h3>Downvote</h3>
+                    <h4>{downs}</h4>
                   </div>
                 </div>
 
               </div>
               <div className="mdl-cell mdl-cell--12-col">
-                <h4>4,756</h4>
+                <h4>{score}</h4>
               </div>
             </div>
           </div>
 
 
-        </div>
+        </div>}
       </div>
     );
   }

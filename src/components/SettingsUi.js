@@ -14,15 +14,15 @@ class SettingsUi extends React.Component {
     const {SetGalleryVirality, SetGalleryWindow, SetGalleryView, SetGallerySort } = this.props.actions
 
     return (
-      <div className="mdl-cell mdl-cell--4-col">
+      <div className="mdl-cell mdl-cell--12-col">
         <div className="mdl-grid">
 
           <div className="mdl-cell mdl-cell--12-col">
           <div className="mdl-grid">
-            <div className="mdl-cell mdl-cell--2-col">
+            <div className="mdl-cell mdl-cell--12-col">
               <p>Gallery:</p>
             </div>
-            <div className="mdl-cell mdl-cell--5-col">
+            <div className="mdl-cell mdl-cell--12-col">
               <SUiButton
                 clickHandler={SetGalleryView}
                 label="Hot"
@@ -36,7 +36,7 @@ class SettingsUi extends React.Component {
                 label="User"
                 group="gallery" />
             </div>
-            <div className="mdl-cell mdl-cell--5-col">
+            <div className="mdl-cell mdl-cell--12-col">
               <label className="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" htmlFor="viral">
                   <input
                     type="checkbox"
@@ -54,10 +54,10 @@ class SettingsUi extends React.Component {
 
           <div className="mdl-cell mdl-cell--12-col">
             <div className="mdl-grid">
-              <div className="mdl-cell mdl-cell--2-col">
+              <div className="mdl-cell mdl-cell--12-col">
                 <p>Window:</p>
               </div>
-              <div className="mdl-cell mdl-cell--10-col">
+              <div className="mdl-cell mdl-cell--12-col">
                 <SUiButton
                   clickHandler={SetGalleryWindow}
                   label="Top"
@@ -100,10 +100,10 @@ class SettingsUi extends React.Component {
 
           <div className="mdl-cell mdl-cell--12-col">
             <div className="mdl-grid">
-              <div className="mdl-cell mdl-cell--2-col">
+              <div className="mdl-cell mdl-cell--12-col">
                 <p>Sort:</p>
               </div>
-              <div className="mdl-cell mdl-cell--10-col">
+              <div className="mdl-cell mdl-cell--12-col">
                 <SUiButton
                   clickHandler={SetGallerySort}
                   label="Viral"

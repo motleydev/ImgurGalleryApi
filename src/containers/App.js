@@ -48,7 +48,7 @@ class App extends Component {
  */
 App.propTypes = {
   actions: PropTypes.object.isRequired,
-  ActiveGalleryItem: PropTypes.number,
+  ActiveGalleryItem: PropTypes.object,
   GalleryWindow: PropTypes.string.isRequired,
   GalleryView: PropTypes.string.isRequired,
   GallerySort: PropTypes.string.isRequired,

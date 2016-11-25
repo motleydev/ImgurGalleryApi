@@ -5,26 +5,25 @@ import styles from './galleryitem.cssmodule.scss';
 // @cssmodules(styles, {alllowMultiple: true})
 const GalleryItem = (props) => {
 
-    const {gifv, id, is_album, account_url, cover, title, description, index, clickHandler} = props
+    const {gifv, id, is_album, account_url, cover, title, description, index, clickHandler, ups, downs, score} = props
     const imageUrl = is_album ? `${cover}b.jpg` : `${id}h.gifv`
 
     function clicky(){
-      clickHandler(index)
+      const obj = {imageUrl, id, title, description, ups, downs, score}
+      clickHandler(obj)
     }
 
     return (
-      <a href="#" onClick={(e) => {e.preventDefault(); clicky() }}>
+      <a styleName="demoCardImage" href="#" onClick={(e) => {e.preventDefault(); clicky() }}>
       <div
-        className="demo-card-image mdl-card mdl-shadow--2dp"
+        className="mdl-card mdl-shadow--2dp"
+        styleName="demoCard"
         style={{backgroundImage: `url(//i.imgur.com/${imageUrl})`}}
       >
-        <div className="mdl-card__title mdl-card--expand">
-          <h4>{title}</h4>
-        </div>
-        <div className="mdl-card__supporting-text">
+        <div styleName="content" className="mdl-card__supporting-text">
           <p>{description}</p>
         </div>
-        <div className="mdl-card__actions">
+        <div styleName="content" className="mdl-card__actions">
           <span className="demo-card-image__filename">Image.jpg</span>
       </div>
     </div>
@@ -36,4 +35,4 @@ GalleryItem.displayName = 'GalleryItem';
 GalleryItem.propTypes = {};
 GalleryItem.defaultProps = {};
 
-export default GalleryItem;
+export default cssmodules(GalleryItem, styles, {allowMultiple: true});

@@ -30,7 +30,7 @@ class Gallery extends React.Component {
     const {SetChosenImage} = this.props.actions
 
     return (
-      <div className="mdl-cell mdl-cell--8-col mdl-shadow--8dp">
+      <div className="mdl-cell mdl-cell--12-col">
         <div className="mdl-grid">
           {fetching && <div className="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" />}
           {!fetching && GalleryContent.map((item, index) => {

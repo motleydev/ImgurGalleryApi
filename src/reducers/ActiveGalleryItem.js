@@ -5,7 +5,7 @@
  */
 import {SET_CHOSEN_IMAGE} from '../actions/const';
 
-const initialState = new Number;
+const initialState = {};
 
 function reducer(state = initialState, action) {
   /* Keep the reducer clean - do not mutate the original state. */
@@ -14,9 +14,8 @@ function reducer(state = initialState, action) {
   switch (action.type) {
 
     case SET_CHOSEN_IMAGE:
-    console.log(action)
       // Modify next state depending on the action and return it
-      return nextState;
+      return action.parameter;
 
     default: {
       /* Return original state if no actions were consumed. */
