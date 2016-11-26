@@ -14,8 +14,8 @@
     "release:minor": "npm version prerelease && git push --follow-tags && npm publish --tag beta",
     "release:patch": "npm version prerelease && git push --follow-tags && npm publish --tag beta",
     "serve:dev": "webpack-dev-server --open --env dev",
-    "serve:dist": "webpack-dev-server --open --env dist -p --progress",
-    "start": "npm run serve:dev",
+    "serve:dist": "NODE_ENV=production node server.js",
+    "start": "node server.js",
     "test": "cross-env NODE_ENV=test karma start",
     "test:watch": "cross-env NODE_ENV=test karma start --autoWatch=true --singleRun=false --reporters=mocha,coverage"
   },
@@ -67,18 +67,11 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.1.0-beta.6",
-    "webpack-dev-server": "^2.1.0-beta"
-  },
-  "dependencies": {
-    "body-parser": "^1.15.2",
-    "cross-env": "^3.1.0",
-    "exports-loader": "0.6.3",
-    "express": "^4.14.0",
-    "express-http-proxy": "0.10.1",
-    "fetch": "1.1.0",
-    "isomorphic-fetch": "2.2.1",
+    "webpack-dev-server": "^2.1.0-beta",
     "material-design-icons": "3.0.1",
     "material-design-lite": "1.2.1",
+    "html-webpack-plugin": "2.24.1",
+    "isomorphic-fetch": "2.2.1",
     "path": "^0.12.7",
     "react": "^15.0.1",
     "react-css-modules": "4.0.3",
@@ -91,6 +84,14 @@
     "redux-thunk": "2.1.0",
     "webpack": "^2.1.0-beta.27",
     "webpack-dev-middleware": "^1.8.4",
-    "webpack-hot-middleware": "^2.13.2"
+    "webpack-hot-middleware": "^2.13.2",
+    "exports-loader": "0.6.3",
+    "cross-env": "^3.1.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-http-proxy": "0.10.1",
+    "fetch": "1.1.0"
   }
 }

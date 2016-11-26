@@ -16,16 +16,13 @@ const GalleryItem = (props) => {
     return (
       <a styleName="demoCardImage" href="#" onClick={(e) => {e.preventDefault(); clicky() }}>
       <div
-        className="mdl-card mdl-shadow--2dp"
+        className="mdl-shadow--2dp"
         styleName="demoCard"
         style={{backgroundImage: `url(//i.imgur.com/${imageUrl})`}}
       >
-        <div styleName="content" className="mdl-card__supporting-text">
-          <p>{description}</p>
+        <div styleName="content">
+          <p>{description || title}</p>
         </div>
-        <div styleName="content" className="mdl-card__actions">
-          <span className="demo-card-image__filename">Image.jpg</span>
-      </div>
     </div>
     </a>
     );

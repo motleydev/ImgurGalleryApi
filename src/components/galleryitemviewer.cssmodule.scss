@@ -1,3 +1,12 @@
-.galleryitemviewer-component {
-  border: 1px dashed #f00;
+.imageContainer {
+  box-sizing: border-box;
+  height:100%;
+}
+
+.imageContainerHolder {
+  height: 95%;
+  margin-bottom: 20px;
+  background-size: contain;
+  background-repeat:no-repeat;
+  background-position: 50% 0%;
 }

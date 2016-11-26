@@ -5,7 +5,6 @@ import styles from './gallery.cssmodule.scss';
 import GalleryItem from './GalleryItem';
 import Galleryiewer from '../containers/ActiveGalleryItem'
 
-@cssmodules(styles)
 class Gallery extends React.Component {
 
 
@@ -27,28 +26,24 @@ class Gallery extends React.Component {
   render() {
 
     const {error, fetching, idle} = this.props.ApplicationStatus
-    const {GalleryContent} = this.props
+    const {GalleryContent, ActiveGalleryItem} = this.props
     const {SetChosenImage} = this.props.actions
 
     return (
-      <div className="mdl-cell mdl-cell--12-col">
-        <div className="mdl-grid">
+        <div className="mdl-grid" styleName="galleryLayout">
           {fetching && <div className="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" />}
           {error && <p>{error}</p>}
-          <div className="mdl-cell mdl-cell--12-col">
-            <div>
+          {ActiveGalleryItem.hasOwnProperty('id') && <div styleName="galleryViewer">
               <Galleryiewer />
-            </div>
-          </div>
-          <div className="mdl-cell mdl-cell--12-col">
-            <div className="mdl-grid" styleName="grid-viewer">
+          </div>}
+          <div styleName="gridViewer">
+            <div className="mdl-grid" styleName="photo-grid">
               {!fetching && GalleryContent.map((item, index) => {
                 return <GalleryItem key={index} index={index} clickHandler={SetChosenImage} {...item}/>
               })}
             </div>
           </div>
         </div>
-      </div>
     );
   }
 }
@@ -57,4 +52,4 @@ Gallery.displayName = 'Gallery';
 Gallery.propTypes = {};
 Gallery.defaultProps = {};
 
-export default Gallery;
+export default cssmodules(Gallery, styles);

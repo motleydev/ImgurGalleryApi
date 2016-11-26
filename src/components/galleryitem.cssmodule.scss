@@ -2,13 +2,16 @@
 
   margin-right: 10px;
   margin-bottom: 10px;
+  text-decoration: none;
+  color: inherit;
 }
 
 .demoCard {
-    width: 200px !important;
-    height: 200px;
+    width: 150px !important;
+    height: 150px !important;
     background-size: contain;
     position:relative;
+    background-size:cover;
 
     &:hover {
 
@@ -33,4 +36,26 @@
 .content {
   z-index: 5;
   opacity:0;
+  position: absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  text-align:center;
+  color: rgba(0,0,0,.54);
+  font-size: 1rem;
+  line-height: 18px;
+  overflow: hidden;
+
+  p {
+    width:100%;
+    height:100%;
+    text-overflow: ellipsis;
+    padding: 15px;
+    margin:0;
+    box-sizing: border-box;
+  }
 }

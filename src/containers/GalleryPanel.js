@@ -27,6 +27,7 @@ function mapStateToProps(state) {
     GallerySort: state.GallerySort,
     GalleryViralCheck: state.GalleryViralCheck,
     ApplicationStatus: state.ApplicationStatus,
+    ActiveGalleryItem: state.ActiveGalleryItem,
   };
   return props;
 }

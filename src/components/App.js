@@ -15,8 +15,7 @@ class AppComponent extends React.Component {
   </div>
   <main className="mdl-layout__content">
     <div className="page-content">
-              <Gallery />
-
+      <Gallery />
     </div>
   </main>
 </div>

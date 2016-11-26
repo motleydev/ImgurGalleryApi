@@ -30,7 +30,7 @@ export function dataReceivedMultiProcess(data) {
 export function fetchImages(state) {
 
   let imgurGallery = state.GalleryView || 'hot'
-  let imgurWindow = imgurGallery == 'top' ? (`/${state.GalleryWindow}/` || '/day/') : '';
+  let imgurWindow = imgurGallery === 'top' ? (`/${state.GalleryWindow}/` || '/day/') : '';
   let imgurSort = state.GallerySort || 'viral'
 
   return function (dispatch) {
@@ -46,6 +46,7 @@ export function fetchImages(state) {
       body: JSON.stringify({
         imgurGallery,
         imgurSort,
+        imgurWindow,
         galleryViralCheck: state.GalleryViralCheck
       })
     })

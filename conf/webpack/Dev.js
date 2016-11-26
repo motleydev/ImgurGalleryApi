@@ -6,6 +6,7 @@
 const webpack = require('webpack');
 const WebpackBaseConfig = require('./Base');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 class WebpackDevConfig extends WebpackBaseConfig {
 
@@ -22,6 +23,11 @@ class WebpackDevConfig extends WebpackBaseConfig {
         './styles/material-icons.css'
       ],
       plugins: [
+        new HtmlWebpackPlugin({
+          template: './index.html',
+          inject: 'body',
+          filename: 'index.html'
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
       ]

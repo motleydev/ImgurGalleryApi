@@ -4,10 +4,15 @@ import styles from './settingsui.cssmodule.scss';
 
 import SUiButton from './SettingsUiButton'
 
+const m = require('exports-loader?componentHandler!material-design-lite/material.js');
 
 
 @cssmodules(styles)
 class SettingsUi extends React.Component {
+
+  componentDidUpdate() {
+    m.upgradeDom();
+  }
 
   render() {
     let { GalleryViralCheck, GalleryWindow, GallerySort, GalleryView } = this.props
@@ -23,31 +28,27 @@ class SettingsUi extends React.Component {
               <p>Gallery:</p>
             </div>
             <div className="mdl-cell mdl-cell--12-col">
-              <SUiButton
-                clickHandler={SetGalleryView}
-                label="Hot"
-                group="gallery" />
-              <SUiButton
-                clickHandler={SetGalleryView}
-                label="Top"
-                group="gallery" />
-              <SUiButton
-                clickHandler={SetGalleryView}
-                label="User"
-                group="gallery" />
+            {['Hot','Top','User'].map((ui, index) => {
+                return (
+                  <SUiButton
+                    clickHandler={SetGalleryView}
+                    active={GalleryView}
+                    label={ui}
+                    group="gallery" />
+                )
+              })}
             </div>
             <div className="mdl-cell mdl-cell--12-col">
-              <label className="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" htmlFor="viral">
+              {GalleryView === 'user' && <label className="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" htmlFor="viral">
                   <input
                     type="checkbox"
                     id="viral"
                     className="mdl-checkbox__input"
                     checked={GalleryViralCheck}
-                    disabled={!(GalleryView === 'user')}
                     onClick={() => SetGalleryVirality(!GalleryViralCheck)}
                   />
                   <span className="mdl-checkbox__label">Show Viral?</span>
-              </label>
+              </label>}
             </div>
             </div>
           </div>
@@ -58,42 +59,17 @@ class SettingsUi extends React.Component {
                 <p>Window:</p>
               </div>
               <div className="mdl-cell mdl-cell--12-col">
-                <SUiButton
+              {['Top', 'Day', 'Week', 'Month', 'Year', 'All'].map((ui, index) => {
+                return (
+                  <SUiButton
                   clickHandler={SetGalleryWindow}
-                  label="Top"
+                  label={ui}
                   group="window"
+                  active={GalleryWindow}
                   disabled={!(GalleryView === 'top')}
                   />
-                <SUiButton
-                  clickHandler={SetGalleryWindow}
-                  label="Day"
-                  group="window"
-                  disabled={!(GalleryView === 'top')}
-                  />
-                <SUiButton
-                  clickHandler={SetGalleryWindow}
-                  label="Week"
-                  group="window"
-                  disabled={!(GalleryView === 'top')}
-                  />
-                <SUiButton
-                  clickHandler={SetGalleryWindow}
-                  label="Month"
-                  group="window"
-                  disabled={!(GalleryView === 'top')}
-                  />
-                <SUiButton
-                  clickHandler={SetGalleryWindow}
-                  label="Year"
-                  group="window"
-                  disabled={!(GalleryView === 'top')}
-                  />
-                <SUiButton
-                  clickHandler={SetGalleryWindow}
-                  label="All"
-                  group="window"
-                  disabled={!(GalleryView === 'top')}
-                  />
+                )
+              })}
               </div>
             </div>
           </div>
@@ -104,24 +80,17 @@ class SettingsUi extends React.Component {
                 <p>Sort:</p>
               </div>
               <div className="mdl-cell mdl-cell--12-col">
-                <SUiButton
+                {['Viral', 'Top', 'Time', 'Rising'].map((ui, index) => {
+                return (
+                  <SUiButton
                   clickHandler={SetGallerySort}
-                  label="Viral"
-                  group="sort" />
-                <SUiButton
-                  clickHandler={SetGallerySort}
-                  label="Top"
-                  group="sort" />
-                <SUiButton
-                  clickHandler={SetGallerySort}
-                  label="Time"
-                  group="sort" />
-                <SUiButton
-                  clickHandler={SetGallerySort}
-                  label="Rising"
+                  active={GallerySort}
+                  label={ui}
                   group="sort"
-                  disabled={!(GalleryView === 'user')}
+                  disabled={ui === 'Rising' && !(GalleryView === 'user')}
                 />
+                )
+              })}
               </div>
             </div>
           </div>

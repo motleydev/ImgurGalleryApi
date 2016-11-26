@@ -194,8 +194,8 @@ class WebpackBaseConfig {
         ]
       },
       output: {
-        path: path.join(__dirname, '/dist/'),
-        filename: 'app.js',
+        path: path.join(__dirname, '../../dist/'),
+        filename: '[name].js',
         publicPath: '/'
       },
       plugins: [],
