@@ -16,16 +16,8 @@ function checkStatus(response) {
 }
 
 function parseJSON(response) {
-  console.log(response)
   return response.json()
 }
-
-// {
-//       method: 'GET',
-//       headers: {
-//         'Authorization': 'Client-ID beba972e29f0b1d'
-//       }
-// }
 
 export function dataReceivedMultiProcess(data) {
 
@@ -34,7 +26,6 @@ export function dataReceivedMultiProcess(data) {
     return dispatch(UpdateGalleryContent(data))
   }
 }
-
 
 export function fetchImages(state) {
 
@@ -46,28 +37,29 @@ export function fetchImages(state) {
 
     dispatch(ApplicationFetchingData())
 
-    fetch('/api')
-// https://api.imgur.com/3/gallery/${imgurGallery}/${imgurSort}/0?showViral=${state.GalleryViralCheck}.json
     return fetch(`/api`,
     {
+      headers: {
+        'Content-Type': 'application/json',
+      },
       method: 'POST',
-      body: {
+      body: JSON.stringify({
         imgurGallery,
         imgurSort,
-        GalleryViralCheck: state.GalleryViralCheck
-      }
+        galleryViralCheck: state.GalleryViralCheck
+      })
     })
-      .then(checkStatus)
       .then(parseJSON)
-      .then(json => {
-        if (json.data) {
-          dispatch(dataReceivedMultiProcess(json.data))
+      .then(checkStatus)
+      .then(response => {
+        if (response.data) {
+          dispatch(dataReceivedMultiProcess(response.data))
         } else {
           let error = new Error("Response didn't have data")
-          error.response = response
           throw error
         }
-      }).catch(e => {
+      })
+      .catch(e => {
         dispatch(ApplicationErroredData(e.message))
       })
 

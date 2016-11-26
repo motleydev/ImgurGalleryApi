@@ -6,8 +6,9 @@ const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('./webpack.config.js')();
-const fetch = require('isomorphic-fetch');
+const fetch = require('fetch').fetchUrl;
 const bodyParser = require("body-parser");
+
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
@@ -33,6 +34,26 @@ if (isDeveloping) {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
   app.use(webpackHotMiddleware(compiler));
+
+// Api Proxy
+  app.post('/api', function(req, res) {
+
+     let {imgurGallery, imgurSort, galleryViralCheck} = req.body
+
+    let f =fetch(
+      `https://api.imgur.com/3/gallery/${imgurGallery}/${imgurSort}/0?showViral=${galleryViralCheck}.json`,
+      {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Client-ID beba972e29f0b1d'
+        }
+      },
+       function(error, meta, body) {
+         res.send(body)
+      })
+  });
+
+
   app.get('/', function response(req, res) {
     res.write(fs.readFileSync(path.join(__dirname, 'src/index.html')));
     res.end();
@@ -43,18 +64,8 @@ if (isDeveloping) {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
   });
 }
-// https://api.imgur.com/3/gallery/${imgurGallery}/${imgurSort}/0?showViral=${state.GalleryViralCheck}.json
-  app.post('/api', function response(req, res) {
-    fetch('https://api.imgur.com/3/gallery/hot/viral/0.json',
-    {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Client-ID beba972e29f0b1d'
-      }
-    }).then( response =>{
-      res.send(response)
-    }).then(() => res.end())
-  });
+
+
 
 app.listen(port, '0.0.0.0', function onStart(err) {
   if (err) {
