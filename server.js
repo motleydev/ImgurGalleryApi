@@ -5,7 +5,6 @@ const express = require('express');
 const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const config = require('./webpack.config.js')();
 const fetch = require('fetch').fetchUrl;
 const bodyParser = require("body-parser");
 const isDeveloping = process.env.NODE_ENV !== 'production';
@@ -18,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 if (isDeveloping) {
+  const config = require('./webpack.config.js')();
   const compiler = webpack(config);
   const middleware = webpackMiddleware(compiler, {
     publicPath: config.output.publicPath,
